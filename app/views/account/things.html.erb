@@ -8,6 +8,8 @@
     <th>amount</th>
     <th>subtotal</th>
     <th>category</th>
+    <th>email</th>
+    <th>time</th>
   </tr>
   <% @things.each do |thing| %>
     <tr>
@@ -25,6 +27,12 @@
       </td>
       <td>
         <%= thing.category %>
+      </td>
+      <td>
+        <%= thing.owner.email %>
+      </td>
+      <td>
+        <%= thing.bought_at %>
       </td>
     </tr>
   <% end %>

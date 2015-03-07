@@ -18,9 +18,13 @@ ActiveRecord::Schema.define(version: 20150228015230) do
     t.integer  "price"
     t.integer  "amount"
     t.string   "category"
+    t.datetime "bought_at"
+    t.integer  "owner_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "things", ["owner_id"], name: "index_things_on_owner_id"
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

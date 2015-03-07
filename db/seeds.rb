@@ -24,7 +24,7 @@ if user
     amount: 2,
     category: "Food",
     owner: user,
-    bought_at: Datetime.now
+    bought_at: Time.now
   })
 
 
