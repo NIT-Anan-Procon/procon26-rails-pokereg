@@ -7,24 +7,27 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-@thing = Thing.new
-@thing.name = 'サンプル０１'
-@thing.price = '100'
-@thing.amount = 5
-@thing.category = '食品'
-@thing.save
+user = User.first
 
-@thing = Thing.new
-@thing.name = 'サンプル０２'
-@thing.price = '1000'
-@thing.amount = 12
-@thing.category = '衣料品'
-@thing.save
+if user
+  Thing.create({
+    name: "Sample01",
+    price: 100,
+    amount: 5,
+    category: "Food",
+    owner: user,
+    bought_at: Time.now
+  })
+  Thing.create({
+    name: "Sample02",
+    price: 500,
+    amount: 2,
+    category: "Food",
+    owner: user,
+    bought_at: Datetime.now
+  })
 
-@thing = Thing.new
-@thing.name = 'サンプル０３'
-@thing.price = '10000'
-@thing.amount = 1
-@thing.category = 'その他'
-@thing.save
+
+end
+
 
