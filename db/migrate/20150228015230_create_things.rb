@@ -6,6 +6,9 @@ class CreateThings < ActiveRecord::Migration
       t.integer :amount
       t.string :category
 
+      t.datetime :bought_at
+      t.references :owner, index: true
+
       t.timestamps
     end
   end
