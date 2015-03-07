@@ -4,6 +4,6 @@ class AccountController < ApplicationController
   end
 
   def things
-    @things = Thing.all
+    @things = Thing.where('owner' => current_user)
   end
 end
