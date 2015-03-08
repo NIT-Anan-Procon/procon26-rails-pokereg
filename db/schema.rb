@@ -11,20 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150228015230) do
+ActiveRecord::Schema.define(version: 20150308024052) do
+
+  create_table "receipts", force: true do |t|
+    t.integer  "owner_id"
+    t.datetime "bought_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "receipts", ["owner_id"], name: "index_receipts_on_owner_id"
 
   create_table "things", force: true do |t|
     t.string   "name"
     t.integer  "price"
     t.integer  "amount"
     t.string   "category"
-    t.datetime "bought_at"
-    t.integer  "owner_id"
+    t.integer  "receipt_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "things", ["owner_id"], name: "index_things_on_owner_id"
+  add_index "things", ["receipt_id"], name: "index_things_on_receipt_id"
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

@@ -8,26 +8,25 @@
 
 
 user = User.first
+receipt = Receipt.new
+receipt.owner = User.first
+receipt.bought_at = Time.now
+receipt.save
 
-if user
+if receipt
   Thing.create({
     name: "Sample01",
     price: 100,
     amount: 5,
     category: "Food",
-    owner: user,
-    bought_at: Time.now
+    receipt: receipt
   })
   Thing.create({
     name: "Sample02",
     price: 500,
     amount: 2,
     category: "Food",
-    owner: user,
-    bought_at: Time.now
+    receipt: receipt
   })
-
-
 end
-
 
