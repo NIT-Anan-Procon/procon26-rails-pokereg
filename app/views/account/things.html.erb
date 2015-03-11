@@ -3,6 +3,7 @@
 
 <table border="1">
   <tr>
+    <th>receipt</th>
     <th>name</th>
     <th>price</th>
     <th>amount</th>
@@ -11,31 +12,36 @@
     <th>email</th>
     <th>time</th>
   </tr>
-  <% @things.each do |thing| %>
-    <tr>
-      <td>
-        <%= thing.name %>
-      </td>
-      <td>
-        ￥<%= thing.price %>
-      </td>
-      <td>
-        <%= thing.amount %>
-      </td>
-      <td>
-        ￥<%= thing.price * thing.amount %>
-      </td>
-      <td>
-        <%= thing.category %>
-      </td>
-      <td>
-        <%= thing.receipt.owner.email %>
-      </td>
-      <td>
-        <%= thing.receipt.bought_at %>
-      </td>
-    </tr>
-  <% end %>
+  <% @receipts.each{|r| %>
+    <% r.things.each{|t| %>
+      <tr>
+        <td>
+          <%= r %>
+        </td>
+        <td>
+          <%= t.name %>
+        </td>
+        <td>
+          ￥<%= t.price %>
+        </td>
+        <td>
+          <%= t.amount %>
+        </td>
+        <td>
+          ￥<%= t.price * t.amount %>
+        </td>
+        <td>
+          <%= t.category %>
+        </td>
+        <td>
+          <%= t.receipt.owner.email %>
+        </td>
+        <td>
+          <%= t.receipt.bought_at %>
+        </td>
+      </tr>
+    <% } %>
+  <% } %>
 </table>
 
 <input type="button" onclick="location.href='/account/charts'"value="戻る">
