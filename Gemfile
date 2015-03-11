@@ -6,7 +6,7 @@ gem 'devise'
 gem 'rails', '4.0.2'
 
 # Use sqlite3 as the database for Active Record
-# gem 'sqlite3'
+gem 'sqlite3'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -46,7 +46,6 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-gem 'sqlite3', groups: %w(test development), require: false
 
-gem 'pg', groups: %w(production), require: false
-gem 'rails_12factor', groups: %w(production), require: false
+gem 'execjs'
+gem 'therubyracer'
