@@ -8,6 +8,7 @@ Devise::Application.routes.draw do
   get "home/index"
   get "home/show"
   post "account" => "account#things"
+  root to: "account#charts"
 # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -62,5 +63,4 @@ Devise::Application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-  root to: "account#charts"
 end

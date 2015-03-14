@@ -1,0 +1,14 @@
+#loginbox {
+	position: absolute; 
+	top: 500px; 
+	left: 450px;
+	z-index: 1;
+}
+#note {
+	position: absolute; 
+	top: 120px; 
+	left: 250px;
+	width: 700px;
+	height: 1400px;
+	z-index: 0;
+}
