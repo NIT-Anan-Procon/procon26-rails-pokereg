@@ -6,4 +6,5 @@ class AccountController < ApplicationController
   def things
        @receipts = Receipt.where(owner_id: current_user.id) 
   end
-end
+  
+ end
