@@ -23,6 +23,14 @@
 </head>
 
 <body>
+<div id="bg_w">
+<img border="0" src="/bgw.jpg" width="700" height="500" alt="1">
+</div>
+<div id="bg_b">
+
+</div>
+
+
 <div id="chart01">
    <div id="graph"></div>
 <script type="text/javascript">
@@ -74,14 +82,52 @@
       .attr("class", "axis")
       .attr("transform", "translate(" + margin  + ",0)")
       .call(yAxis);i
-</div>
 </script>
+</div>
 
+<div id="crc">
+<div id="graph2"></div>
+<script type="text/javascript">
+  var dataset = [
+      {legend:"food", value:100, color:"red"},
+      {legend:"wear", value:50, color:"yellow"},
+        {legend:"entertainment", value:70, color:"pink"},
+      {legend:"etc", value:20, color:"purple"}
+      ];
+  var width = 1600;
+  var height = 500;
+  var radius = 250;
+  var svg = d3.select("body").append("svg")
+      .attr("width", width)
+      .attr("height", height)
+      .append("g")
+      .attr("transform", "translate(" + 1000  + "," + height / 2 + ")");
+  var arc = d3.svg.arc()
+          .outerRadius(radius)
+          .innerRadius(30);
+  var pie = d3.layout.pie()
+          .sort(null)
+          .value(function(d){ return d.value; });
+  var g = svg.selectAll(".fan")
+        .data(pie(dataset))
+        .enter()
+        .append("g")
+        .attr("class", "fan")
+    g.append("path")
+        .attr("d", arc)
+        .attr("fill", function(d){ return d.data.color; })
+    g.append("text")
+        .attr("transform", function(d) { return "translate(" + arc.centroid(d) + ")"; })
+        .style("text-anchor", "middle")
+        .text(function(d) { return d.data.legend; });
 
+</script>
+</div>
 
 </body>
 <br>
+<div id='b'>
 <input type="button" onclick="location.href='/account/things'"value="詳細">
-
+</div>
 
 
