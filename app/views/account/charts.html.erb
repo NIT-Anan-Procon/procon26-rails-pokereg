@@ -1,13 +1,84 @@
 <h1>Account#charts</h1>
 <p>Find me in app/views/account/charts.html.erb</p>
 
+<link data-turbolinks-track="true" href="/assets/css/charts" media="all" rel="stylesheet" />
 
-<%= image_tag '/assets/image01.gif' %>
+<head>
+  <script type="text/javascript" src="d3/d3.min.js"></script>
+    <style type="text/css">
+      .axis path,
+      .axis line{
+        fill: none;
+        stroke: black;
+        shape-rendering: crispEdges;
+      }
+      .axis text {
+        font-family: sans-serif;
+        font-size: 11px;
+      }
+      .tick line{
+        opacity: 0.2;
+      }
+    </style>
+</head>
+
+<body>
+   <div id="graph"></div>
+<script type="text/javascript">
+   var list = [30000, 20000, 50000, 60000, 40000, 100000, 50000, 90000, 80000, 80000, 20000, 30000];
+   var svgWidth = 600;
+   var svgHeight = 400;
+   var margin = 50;
+   var Xmax = 12;
+   var Ymax = 100000;
+   var xScale = d3.scale.linear()
+          .domain([1, Xmax])
+          .range([margin, svgWidth-margin]);
+   var yScale = d3.scale.linear()
+          .domain([0, Ymax])
+          .range([svgHeight-margin, margin]);
+   var xAxis = d3.svg.axis()
+          .scale(xScale)
+          .orient("bottom")
+          .ticks(12)
+          .innerTickSize(-svgHeight)
+          .outerTickSize(0)
+          .tickPadding(10);
+   var yAxis = d3.svg.axis()
+          .scale(yScale)
+          .orient("left")
+          .ticks(10)
+          .innerTickSize(-svgWidth)
+          .outerTickSize(0)
+          .tickPadding(8);
+
+   var svg = d3.select("#graph").append("svg")
+       .attr("width", svgWidth).attr("height", svgHeight)
+   var line = d3.svg.line()
+    .x(function(d, i){ return xScale(i); }) 
+    .y(function(d){ return yScale(d); }) 
+   svg.append("path")
+      .attr("d", line(list))
+      .attr("stroke", "black")
+      .attr("transform","translate(" + (margin-5) + "," + 0 + ")")
+      .attr("fill", "none");
+   svg.append("g")
+      .attr("class", "axis")
+      .attr("transform", "translate(0," + (svgHeight-margin) + ")")
+      .call(xAxis);
+   svg.selectAll("line")
+    .attr("stroke", "black")
+    .attr("shape-rendering", "crispEdges");
+   svg.append("g")
+      .attr("class", "axis")
+      .attr("transform", "translate(" + margin  + ",0)")
+      .call(yAxis);
+</script>
+
+
+
+</body>
 <br>
-<%= image_tag '/assets/image02.gif' %>
-<br>
-
-
 <input type="button" onclick="location.href='/account/things'"value="詳細">
 
 

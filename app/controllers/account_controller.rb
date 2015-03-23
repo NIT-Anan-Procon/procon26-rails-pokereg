@@ -4,7 +4,6 @@ class AccountController < ApplicationController
   end
 
   def things
-       @receipts = Receipt.where(owner_id: current_user.id) 
+    @receipts = Receipt.where(owner_id: current_user.id)
   end
-  
- end
+end
